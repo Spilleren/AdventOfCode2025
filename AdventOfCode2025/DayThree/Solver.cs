@@ -11,18 +11,20 @@ public class Solver : ISolver
         return GetSumOfJoltage(input).ToString();
     }
 
-    public int GetSumOfJoltage(ImmutableArray<string> input)
+    public long GetSumOfJoltage(ImmutableArray<string> input)
     {
-        return input.Select(GetHighestJoltage).Sum();
+        return input.Select(GetHighestTwoDigitJoltage).Sum();
     }
 
     public string PartTwo()
     {
-        throw new NotImplementedException();
+        var input = Input.Load("DayThree");
+
+        return input.Select(GetHighestTwelveDigitJoltage).Sum().ToString();
     }
 
 
-    public int GetHighestJoltage(string bank)
+    public int GetHighestTwoDigitJoltage(string bank)
     {
         var digits = bank.Select(x => Convert.ToInt64(x) - '0').ToArray();
         var max = digits.Max();
@@ -30,6 +32,21 @@ public class Solver : ISolver
         {
             var secondHighest= digits.Skip(digits.IndexOf(max)+1).Max();
             return Convert.ToInt32($"{max}{secondHighest}");
+        }
+        
+        var orderedDigits = digits.OrderBy(x => x).ToArray();
+        return Convert.ToInt32($"{orderedDigits[^2]}{orderedDigits[^1]}");
+    }
+
+    public long GetHighestTwelveDigitJoltage(string bank)
+    {
+        var digits = bank.Select(x => Convert.ToInt64(x) - '0').ToArray();
+        var withOutThelastTwelve= digits.SkipLast(11).ToArray();
+        var max = withOutThelastTwelve.Max();
+        if (withOutThelastTwelve.Contains(max))
+        {
+            var secondHighest= string.Concat(digits.Skip(digits.IndexOf(max)+1).Take(11));
+            return Convert.ToInt64($"{max}{secondHighest}");
         }
         
         var orderedDigits = digits.OrderBy(x => x).ToArray();
