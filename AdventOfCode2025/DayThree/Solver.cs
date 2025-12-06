@@ -8,48 +8,34 @@ public class Solver : ISolver
     {
         var input = Input.Load("DayThree");
         
-        return GetSumOfJoltage(input).ToString();
-    }
-
-    public long GetSumOfJoltage(ImmutableArray<string> input)
-    {
-        return input.Select(GetHighestTwoDigitJoltage).Sum();
+        return input.Select(x => MaxNumberFromDigits(x, 2)).Sum().ToString();
     }
 
     public string PartTwo()
     {
         var input = Input.Load("DayThree");
 
-        return input.Select(GetHighestTwelveDigitJoltage).Sum().ToString();
+        return input.Select(x => MaxNumberFromDigits(x, 12)).Sum().ToString();
     }
 
-
-    public int GetHighestTwoDigitJoltage(string bank)
+    public static long MaxNumberFromDigits(string bank, int k)
     {
-        var digits = bank.Select(x => Convert.ToInt64(x) - '0').ToArray();
-        var max = digits.Max();
-        if (max != digits[^1])
-        {
-            var secondHighest= digits.Skip(digits.IndexOf(max)+1).Max();
-            return Convert.ToInt32($"{max}{secondHighest}");
-        }
-        
-        var orderedDigits = digits.OrderBy(x => x).ToArray();
-        return Convert.ToInt32($"{orderedDigits[^2]}{orderedDigits[^1]}");
-    }
+        var n = bank.Length;
+        var stack = new List<int>(capacity: k);
 
-    public long GetHighestTwelveDigitJoltage(string bank)
-    {
-        var digits = bank.Select(x => Convert.ToInt64(x) - '0').ToArray();
-        var withOutThelastTwelve= digits.SkipLast(11).ToArray();
-        var max = withOutThelastTwelve.Max();
-        if (withOutThelastTwelve.Contains(max))
+        for (var i = 0; i < n; i++)
         {
-            var secondHighest= string.Concat(digits.Skip(digits.IndexOf(max)+1).Take(11));
-            return Convert.ToInt64($"{max}{secondHighest}");
+            var d = bank[i] - '0';
+            while (stack.Count > 0 && d > stack[^1] && (stack.Count - 1 + (n - i)) >= k)
+            {
+                stack.RemoveAt(stack.Count - 1);
+            }
+            if (stack.Count < k)
+            {
+                stack.Add(d);
+            }
         }
-        
-        var orderedDigits = digits.OrderBy(x => x).ToArray();
-        return Convert.ToInt32($"{orderedDigits[^2]}{orderedDigits[^1]}");
+
+        return stack.Aggregate(0L, (current, digit) => current * 10 + digit);
     }
 }
