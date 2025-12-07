@@ -7,6 +7,6 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <None Include="Day*/input.txt" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="Day*/Input.txt" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 </Project>
