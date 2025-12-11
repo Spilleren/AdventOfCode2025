@@ -81,7 +81,7 @@ public class SolverTest
     {
         var sut = new Solver();
 
-        sut.PartTwo().ShouldBe(123);
+        sut.PartTwo().ShouldBe(344260049617193);
     }
 
 }
