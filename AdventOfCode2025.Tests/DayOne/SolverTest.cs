@@ -54,7 +54,7 @@ public class SolverTest
 
         var result = sut.PartOne();
         
-        result.ShouldBe("1074");
+        result.ShouldBe(1074);
     }
 
     [Fact]
@@ -80,6 +80,6 @@ public class SolverTest
 
         var result = sut.PartTwo();
 
-        result.ShouldBe("6254");
+        result.ShouldBe(6254);
     }
 }

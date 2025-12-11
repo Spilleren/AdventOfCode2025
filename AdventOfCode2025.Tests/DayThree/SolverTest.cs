@@ -23,7 +23,7 @@ public class SolverTest
 
         var res = sut.PartOne();
         
-        res.ShouldBe("16973");
+        res.ShouldBe(16973);
     }
     
     [Fact]
@@ -44,7 +44,7 @@ public class SolverTest
 
         var res = sut.PartTwo();
         
-        res.ShouldBe("168027167146027");
+        res.ShouldBe(168027167146027);
     }
 
 }

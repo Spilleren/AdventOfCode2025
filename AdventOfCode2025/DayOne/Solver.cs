@@ -4,18 +4,18 @@ namespace AdventOfCode2025.DayOne;
 
 public class Solver : ISolver
 {
-    public string PartOne()
+    public long PartOne()
     {
         var input = Input.Load("DayOne");
 
-        return CountZeroHits(input).ToString();
+        return CountZeroHits(input);
     }
 
-    public string PartTwo()
+    public long PartTwo()
     {
         var input = Input.Load("DayOne");
         
-        return CountZeroPassings(input).ToString();
+        return CountZeroPassings(input);
     }
 
     public static int CountZeroHits(ImmutableArray<string> input)

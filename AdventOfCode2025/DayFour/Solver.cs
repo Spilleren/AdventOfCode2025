@@ -4,16 +4,16 @@ namespace AdventOfCode2025.DayFour;
 
 public class Solver : ISolver
 {
-    public string PartOne()
+    public long PartOne()
     {
         var input = Input.Load("DayFour");
         
         var paperRollMatrix = TooPaperRollMatrix(input);
-        
-        return RemoveAccessibleRolls(paperRollMatrix).Removed.ToString();
+
+        return RemoveAccessibleRolls(paperRollMatrix).Removed;
     }
 
-    public string PartTwo()
+    public long PartTwo()
     {
         var input = Input.Load("DayFour");
 
@@ -28,7 +28,7 @@ public class Solver : ISolver
             totalRemoved += newState.Removed;
         } while (currentState.Removed != 0);
 
-        return totalRemoved.ToString();
+        return totalRemoved;
     }
 
     public static bool[,] TooPaperRollMatrix(ImmutableArray<string> input)

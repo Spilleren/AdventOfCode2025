@@ -1,0 +1,21 @@
+
+[*]
+
+# ReSharper properties
+resharper_arguments_skip_single = true
+resharper_blank_lines_after_block_statements = 0
+resharper_blank_lines_around_single_line_type = 0
+resharper_braces_for_for = required
+resharper_braces_for_ifelse = required_for_multiline_statement
+resharper_braces_for_while = required
+resharper_csharp_blank_lines_around_type = 0
+resharper_csharp_max_line_length = 131
+resharper_csharp_remove_blank_lines_near_braces_in_code = false
+resharper_csharp_remove_blank_lines_near_braces_in_declarations = false
+resharper_csharp_wrap_arguments_style = chop_if_long
+resharper_default_private_modifier = implicit
+resharper_indent_pars = outside
+resharper_instance_members_qualify_declared_in = base_class
+resharper_parentheses_redundancy_style = remove
+resharper_place_expr_method_on_single_line = false
+resharper_place_simple_embedded_statement_on_same_line = true

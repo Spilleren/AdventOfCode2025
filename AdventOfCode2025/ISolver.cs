@@ -2,7 +2,7 @@ namespace AdventOfCode2025;
 
 public interface ISolver
 {
-    public string PartOne();
-    public string PartTwo();
+    public long PartOne();
+    public long PartTwo();
 
 }

@@ -4,26 +4,26 @@ namespace AdventOfCode2025.DayTwo;
 
 public class Solver : ISolver
 {
-    public string PartOne()
+    public long PartOne()
     {
         var input = Input.Load("DayTwo");
 
         var ranges = input.First().Split(',').Select(x => x.Split('-')).Select(x => new Range(long.Parse(x[0]), long.Parse(x[1])));
         
         var sillyPatterns = ranges.Select(x => GetSillyPattern(x.First, x.Last)).SelectMany(x => x);
-        
-        return sillyPatterns.Sum().ToString();
+
+        return sillyPatterns.Sum();
     }
 
-    public string PartTwo()
+    public long PartTwo()
     {
         var input = Input.Load("DayTwo");
 
         var ranges = input.First().Split(',').Select(x => x.Split('-')).Select(x => new Range(long.Parse(x[0]), long.Parse(x[1])));
         
         var sillyPatterns = ranges.Select(x => GetSillyPatternPart2(x.First, x.Last)).SelectMany(x => x);
-        
-        return sillyPatterns.Sum().ToString();   
+
+        return sillyPatterns.Sum();
     }
 
     public bool CheckForSillyPattern(long i)
@@ -54,7 +54,7 @@ public class Solver : ISolver
         return [..values.Where(CheckForSillyPatternPart2)];
     }
 
-    IEnumerable<long> GenerateRange(long first, long last)
+    static IEnumerable<long> GenerateRange(long first, long last)
     {
         for (var i = first; i <= last; i++)
         {

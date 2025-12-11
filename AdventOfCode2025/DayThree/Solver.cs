@@ -4,18 +4,18 @@ namespace AdventOfCode2025.DayThree;
 
 public class Solver : ISolver
 {
-    public string PartOne()
+    public long PartOne()
     {
         var input = Input.Load("DayThree");
-        
-        return input.Select(x => MaxNumberFromDigits(x, 2)).Sum().ToString();
+
+        return input.Select(x => MaxNumberFromDigits(x, 2)).Sum();
     }
 
-    public string PartTwo()
+    public long PartTwo()
     {
         var input = Input.Load("DayThree");
 
-        return input.Select(x => MaxNumberFromDigits(x, 12)).Sum().ToString();
+        return input.Select(x => MaxNumberFromDigits(x, 12)).Sum();
     }
 
     public static long MaxNumberFromDigits(string bank, int k)
